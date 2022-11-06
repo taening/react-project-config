@@ -1,0 +1,66 @@
+{
+  /*
+   * 1) VSCode 편집기 및 UI관련 설정
+   */
+  // VSCode Workbench Settings
+  "workbench.settings.useSplitJSON": true, // settings.json을 열면 Default 설정 보이게 활성화
+  "workbench.iconTheme": "material-icon-theme", // Default 아이콘 테마 지정
+  "workbench.startupEditor": "none", // Project폴더 시작시 편집기에 아무것도 안띄움
+  
+  // Files Settings
+  "files.associations": { // .json, rc을 .jsonc 확장자로 바꿔 주석사용
+    "*.json": "jsonc",
+    "*rc": "jsonc"
+  },
+
+  // Code Editor Settings
+  "editor.bracketPairColorization.enabled": true, // Pair bracket에 대해 색깔 표시 활성화
+  "editor.codeActionsOnSave": { // 파일 저장시 ESLint 동작하도록 활성화
+    "source.fixAll": true
+  },
+  "editor.tabSize": 2, // Editor의 Tab(공백)을 2칸으로 재정의
+  
+  // Breadcrumbs Settings
+  "breadcrumbs.enabled": false, // 현재 파일경로 표시창 비활성화
+  
+  // Market Place(Extension) Settings
+  "extensions.showRecommendationsOnlyOnDemand": true, // Extension Tab의 '권장' 비활성화
+  
+  // Material Icon Theme Settings
+  "material-icon-theme.folders.theme": "specific", // Folder 아이콘 테마 활성화
+  "material-icon-theme.activeIconPack": "react", // React 확장아이콘 활성화
+  
+  // ====================================================================================
+  
+  /*
+   * 2) 프로그래밍 언어 관련 설정
+   */
+  // Code Spell Checker Settings
+  "cSpell.enabledLanguageIds": [
+    // Code Spell Checker가 동작할 언어 지정
+    "css",
+    "git-commit",
+    "html",
+    "javascript",
+    "javascriptreact",
+    "markdown",
+    "typescript",
+    "typescriptreact"
+  ],
+  
+  // ESLint Settings
+  "eslint.alwaysShowStatus": true, // 상태창에 ESLint 상시 활성화
+  "eslint.workingDirectories": [
+    // Working Directory 자동으로 찾도록 설정
+    {
+      "mode": "auto"
+    }
+  ],
+  "eslint.validate": [
+    // ESLint로 확인할 언어 설정
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ]
+}
