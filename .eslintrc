@@ -1,48 +1,133 @@
 {
   "root": true,
-  "env": {
-    "browser": true,
-    "commonjs": true,
-    "es6": true,
-    "node": true
-  },
-  "plugins": [],
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:prettier/recommended"
-  ],
-  "rules": {
-    "prettier/prettier": [
-      "error",
-      {
-        "printWidth": 120,
-        "tabWidth": 2,
-        "singleQuote": true,
-        "arrowParens": "avoid",
-        "endOfLine": "auto"
-      }
-    ],
-    "@typescript-eslint/naming-convention": "warn"
-  },
-  "ignorePatterns": ["node_modules", "build", "dist", "public"],
-
+  "ignorePatterns": [".husky", "node_modules", "build", "dist", "public"],
+  
   "overrides": [
+    // 1) React with JavaScript and Typescript (Testing Library 제외)
     {
-      "files": ["**/*.+{js|jsx}"]
+      "files": ["**/*.{js,jsx,ts,tsx}"],
+      "excludedFiles": [
+        "**/__tests__/**/*.{js,jsx,ts,tsx}",
+        "**/*.{spec,test}.{js,jsx,ts,tsx}"
+      ],
+      "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true,
+        "node": true
+      },
+      "parser": "@typescript-eslint/parser",
+      "plugins": [],
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:import/recommended",
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended",
+        "plugin:prettier/recommended"
+      ],
+      "rules": {
+        "@typescript-eslint/naming-convention": "warn",
+        "import/order": [
+          "error",
+          {
+            "groups": [
+              ["builtin", "external"],
+              "internal",
+              ["parent", "sibling"],
+              "index"
+            ],
+            "newlines-between": "always",
+            "pathGroups": [
+              {
+                "pattern": "{ react* }",
+                "group": "external",
+                "position": "before"
+              }
+            ]
+          }
+        ],
+        "prettier/prettier": [
+          "error",
+          {
+            "printWidth": 120,
+            "tabWidth": 2,
+            "singleQuote": true,
+            "arrowParens": "avoid",
+            "endOfLine": "auto"
+          }
+        ]
+      },
+      "settings": {
+        "import/resolver": {
+          "typescript": {} // this loads <rootdir>/tsconfig.json to eslint
+        }
+      }
     },
+
+    // 2) React Testing Library
     {
-      "files": ["**/*.json", "**/*rc"],
-      "extends": ["plugin:json/recommended"]
-    },
-    {
-      "files": ["**/__tests__/**/*", "**/*.{spec,test}.*"],
+      "files": [
+        "**/__tests__/**/*",
+        "**/*.{spec,test}.*"
+      ],
       "env": {
         "jest/globals": true
       },
-      "plugins": ["jest", "testing-library"],
-      "extends": ["plugin:jest/recommended", "plugin:jest-dom/recommended", "plugin:testing-library/react"]
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project": ["./tsconfig.json"]
+      },
+      "plugins": [
+        "jest",
+        "testing-library"
+      ],
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:import/recommended",
+        "plugin:jest/recommended",
+        "plugin:jest-dom/recommended",
+        "plugin:testing-library/react",
+        "plugin:prettier/recommended"
+      ],
+      "rules": {
+        "@typescript-eslint/naming-convention": "warn",
+        "import/order": [
+          "error",
+          {
+            "groups": [
+              ["builtin", "external"],
+              "internal",
+              ["parent", "sibling"],
+              "index"
+            ],
+            "newlines-between": "always",
+            "pathGroups": [
+              {
+                "pattern": "{ react* }",
+                "group": "external",
+                "position": "before"
+              }
+            ]
+          }
+        ],
+        "prettier/prettier": [
+          "error",
+          {
+            "printWidth": 120,
+            "tabWidth": 2,
+            "singleQuote": true,
+            "arrowParens": "avoid",
+            "endOfLine": "auto"
+          }
+        ]
+      },
+      "settings": {
+        "import/resolver": {
+          "typescript": {} // this loads <rootdir>/tsconfig.json to eslint
+        }
+      }
     }
   ]
 }
