@@ -1,0 +1,26 @@
+{
+  "recommendations": [
+    // Project Management Extension
+    "eamodio.gitlens", // GitLens
+    "donjayamanne.githistory", // Git History
+
+    // Code Management Extension
+    "dbaeumer.vscode-eslint", // ESLint
+    "esbenp.prettier-vscode", // Prettier
+    "styled-components.vscode-styled-components", // VSCode Styled Components
+    "wix.vscode-import-cost", // Import Cost
+    "formulahendry.auto-rename-tag", // Auto Rename Tag
+    "streetsidesoftware.code-spell-checker", // Code Spell Checker
+
+    // Theme Extension
+    "PKief.material-icon-theme", // Material Icon Theme
+    "oderwat.indent-rainbow", // Indent Rainbow
+    "wayou.vscode-todo-highlight", // TODO Highlight
+    "naumovs.color-highlight", // Color Highlight
+
+    // etc. Extension
+    "ms-azuretools.vscode-docker", // Docker for VSCode
+    "MS-CEINTL.vscode-language-pack-ko", // Korean Language Pack for VSCode
+    "ritwickdey.LiveServer" // Live Server
+  ]
+}
